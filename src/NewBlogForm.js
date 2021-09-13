@@ -32,7 +32,7 @@ function NewBlogForm() {
     <div>
       <h2>Draft your blog here!</h2>
 
-      <form class="w-full max-w-sm" onSubmit={handleSubmit}>
+      <form class="ui form" onSubmit={handleSubmit}>
         <div class="ui huge icon input">
           <input
             type="text"
@@ -43,22 +43,18 @@ function NewBlogForm() {
           />
           <i aria-hidden="true"></i>
         </div>
-
         <br />
         <br />
-        <div>
-          <div class="ui large icon input">
-            <input 
-            type="text" 
-            placeholder="Content..." />
-            <i aria-hidden="true"
-            type="text"
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            ></i>
-          </div>
-        </div>
+        <textarea
+          rows="10"
+          type="textarea"
+          placeholder="Content..."
+          aria-hidden="true"
+          id="content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        ></textarea>
+        <br />
         <br />
         <br />
         <div>
