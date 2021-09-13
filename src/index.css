@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navigation {
+  position: relative;
+  flex-direction: row;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 25px;
+  align-items: center;
+}
+
+.navigation li {
+  text-decoration: none;
+  list-style: none;
+  font-weight: 500;
+  margin-left: 50px;
+  background-color: rgb(200, 108, 240);
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; 
+  text-decoration: none;
+}
+
+.navigation li:hover {
+  color: white;
+  background-color: #9900bc;
+} 
