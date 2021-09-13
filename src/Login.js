@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 function Login({ user, setUser }) {
     const [username, setUsername] = useState("");
@@ -6,20 +7,22 @@ function Login({ user, setUser }) {
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        fetch("/me").then((response) => {
-          if (response.ok) {
-            response.json().then((user) => {
-              setUser(user)
-              if (user) {
-                return <h2>Welcome, {user.username}!</h2>;
-              } else {
-                return <Login setUser={setUser} />;
-              }
-            });
-          }
-        });
-    }, []);
+    const history = useHistory()
+
+    // useEffect(() => {
+    //     fetch("/me").then((response) => {
+    //       if (response.ok) {
+    //         response.json().then((user) => {
+    //           setUser(user)
+    //           if (user) {
+    //             return <h2>Welcome, {user.username}!</h2>;
+    //           } else {
+    //             return <Login setUser={setUser} />;
+    //           }
+    //         });
+    //       }
+    //     });
+    // }, []);
   
     function handleSubmit(e) {
         e.preventDefault();
@@ -33,7 +36,8 @@ function Login({ user, setUser }) {
         }).then((r) => {
           setIsLoading(false);
           if (r.ok) {
-            r.json().then((user) => setUser(user));
+            r.json().then(setUser)
+            history.push('/')      
           } else {
             r.json().then((err) => setErrors(err.errors));
           }

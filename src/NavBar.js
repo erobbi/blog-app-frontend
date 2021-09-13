@@ -32,15 +32,18 @@ function NavBar({ user, setUser }){
                 <li>My Profile</li>
             </NavLink> 
             {/* : null } */}
-            {/* { user ? null : */}
+            { user ? null :
             <NavLink to="/signup" >
                 <li>Sign Up</li>
             </NavLink>
-            {/* } */}
-            {/* { user ? null : */}
+            }
+            { user ? 
+                <h2>Welcome, {user.username}!</h2>
+               :
             <NavLink to="/login" >
                 <li>Log In</li>
             </NavLink>
+            }
             {/* } */}
             {/* { user ?  */}
             <NavLink to="/logout" >
