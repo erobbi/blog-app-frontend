@@ -51,7 +51,7 @@ function Signup({ setUser }) {
           ))
         : null}
 
-      <div class="ui focus input">
+      <div className="ui focus input">
         <input
           type="text"
           placeholder="full name"
@@ -62,7 +62,7 @@ function Signup({ setUser }) {
         />
       </div>
       <br />
-      <div class="ui focus input">
+      <div className="ui focus input">
         <input
           type="text"
           placeholder="username"
@@ -72,7 +72,7 @@ function Signup({ setUser }) {
         />
       </div>
       <br />
-      <div class="ui focus input">
+      <div className="ui focus input">
         <input
           type="text"
           placeholder="avatar url"
@@ -83,7 +83,7 @@ function Signup({ setUser }) {
       </div>
 
       <br />
-      <div class="ui focus input">
+      <div className="ui focus input">
         <input
           type="password"
           placeholder="password"
@@ -94,7 +94,7 @@ function Signup({ setUser }) {
       </div>
 
       <br />
-      <div class="ui focus input">
+      <div className="ui focus input">
         <input
           type="password"
           placeholder="confirm password"
@@ -106,20 +106,20 @@ function Signup({ setUser }) {
 
       <br />
       <div>
-        <div class="ui labeled input">
-          <div class="ui label label">Birthdate:</div>
+        <div className="ui labeled input">
+          <div className="ui label label">Birthdate:</div>
           <input
             type="date"
             id="birthdate"
             value={birthdate}
             onChange={(e) => setBirthdate(e.target.value)}
           />
-          <i aria-hidden="true" class="search icon"></i>
+          <i aria-hidden="true" className="search icon"></i>
         </div>
       </div>
       <div>
-        <div class="ui left icon input">
-          <i aria-hidden="true" class="at icon"></i>
+        <div className="ui left icon input">
+          <i aria-hidden="true" className="at icon"></i>
           <input
             type="text"
             id="email"
@@ -130,7 +130,7 @@ function Signup({ setUser }) {
         </div>
       </div>
       <br />
-      <button type="submit" class="ui button">
+      <button type="submit" className="ui button">
         Sign Up
       </button>
     </form>

@@ -22,16 +22,16 @@ function NavBar({ user, setUser }){
             <NavLink to="/blogs">
                 <li>Blogs</li>
             </NavLink>
-            {/* { user ?  */}
+            { user ? 
             <NavLink to="/blogs/new" >
                 <li>Add New Blog</li>
             </NavLink> 
-            {/* : null } */}
-            {/* { user ? */}
+             : null }
+            { user ? 
             <NavLink to="/mypage" >
                 <li>My Profile</li>
             </NavLink> 
-            {/* : null } */}
+            : null }
             { user ? null :
             <NavLink to="/signup" >
                 <li>Sign Up</li>
@@ -44,12 +44,11 @@ function NavBar({ user, setUser }){
                 <li>Log In</li>
             </NavLink>
             }
-            {/* } */}
-            {/* { user ?  */}
+            { user ? 
             <NavLink to="/logout" >
                 <li onClick={handleLogoutClick} >Log Out</li>
             </NavLink> 
-            {/* : null } */}
+            : null }
         </nav>
 
     )

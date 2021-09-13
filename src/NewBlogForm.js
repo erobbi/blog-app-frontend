@@ -9,7 +9,7 @@ function NewBlogForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/blogs#create", {
+    fetch("/blogs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,8 +33,8 @@ function NewBlogForm() {
     <div>
       <h2>Draft your blog here!</h2>
 
-      <form class="ui form" onSubmit={handleSubmit}>
-        <div class="ui huge icon input">
+      <form className="ui form" onSubmit={handleSubmit}>
+        <div className="ui huge icon input">
           <input
             type="text"
             placeholder="Title here..."
@@ -59,7 +59,7 @@ function NewBlogForm() {
         <br />
         <br />
         <div>
-          <div class="ui mini icon input">
+          <div className="ui mini icon input">
             <input
               type="text"
               placeholder="optional image link..."
@@ -73,7 +73,7 @@ function NewBlogForm() {
         </div>
         <br />
         <br />
-        <button type="submit" class="ui button">
+        <button type="submit" className="ui button">
           Submit Blog!
         </button>
       </form>
