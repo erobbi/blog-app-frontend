@@ -24,15 +24,15 @@ function Signup({ setUser }) {
           password_confirmation: passwordConfirmation,
           birthdate,
           email,
-          img_url
+          img_url,
         }),
       }).then((r) => {
-            if (r.ok) {
-                r.json().then(setUser);
-              } else {
-                r.json().then((err) => setErrors(err.errors));
-              }
-        });  
+        if (r.ok) {
+          r.json().then(setUser);
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });  
     }
   
     return (
