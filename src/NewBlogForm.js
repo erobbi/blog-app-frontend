@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Button } from "semantic-ui-react";
+import { useHistory } from "react-router-dom"
 
-function NewBlogForm() {
+function NewBlogForm({ blogs, setBlogs }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [img_url, setImg_url] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const history = useHistory()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,7 +24,10 @@ function NewBlogForm() {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then(console.log("blog submitted"));
+        r.json().then((newBlog) => {
+          setBlogs([...blogs, newBlog])
+          history.push('/mypage')
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

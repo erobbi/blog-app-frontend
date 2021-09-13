@@ -16,17 +16,18 @@ function App() {
   const [blogs, setBlogs] = useState([])
   const [user, setUser] = useState(null)
   const history = useHistory()
-
+  
+  console.log(blogs)
   return (
     <div className="App">
        <NavBar user={user} setUser={setUser} />
       <div>
         <Switch>
           <Route exact path="/blogs/new">
-            <NewBlogForm />
+            <NewBlogForm blogs={blogs} setBlogs={setBlogs} />
           </Route>
           <Route exact path="/mypage">
-            <MyProfile />
+            <MyProfile user={user} />
           </Route>
           <Route exact path="/blogs">
             <BlogContainer blogs={blogs}/>

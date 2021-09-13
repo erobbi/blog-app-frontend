@@ -54,7 +54,7 @@ function Login({ user, setUser }) {
             ))
           : null}
 
-        <div class="ui focus input">
+        <div className="ui focus input">
           <input
             type="text"
             placeholder="username"
@@ -65,7 +65,7 @@ function Login({ user, setUser }) {
         </div>
         <br />
         <br />
-        <div class="ui focus input">
+        <div className="ui focus input">
           <input
             type="password"
             placeholder="password"
@@ -76,7 +76,7 @@ function Login({ user, setUser }) {
         </div>
         <br />
         <br />
-        <button type="submit" class="ui button">
+        <button type="submit" className="ui button">
           {isLoading ? "Loading..." : "Login"}
         </button>
       </form>
