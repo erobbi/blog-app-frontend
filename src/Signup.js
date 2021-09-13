@@ -24,7 +24,7 @@ function Signup({ setUser }) {
           password_confirmation: passwordConfirmation,
           birthdate,
           email,
-          img_url,
+          img_url
         }),
       }).then((r) => {
             if (r.ok) {
