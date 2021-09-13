@@ -46,28 +46,39 @@ function Login({ user, setUser }) {
   
     return (
       <form onSubmit={handleSubmit}>
-       { errors ? 
-         errors.map((err) => (
-          <h3 style={{color: "red"}} key={err}>{err}</h3>
-        )) : null }
-  
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-  
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-       
-        <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
+        {errors
+          ? errors.map((err) => (
+              <h3 style={{ color: "red" }} key={err}>
+                {err}
+              </h3>
+            ))
+          : null}
+
+        <div class="ui focus input">
+          <input
+            type="text"
+            placeholder="username"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <br />
+        <br />
+        <div class="ui focus input">
+          <input
+            type="password"
+            placeholder="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <br />
+        <br />
+        <button type="submit" class="ui button">
+          {isLoading ? "Loading..." : "Login"}
+        </button>
       </form>
     );
   }

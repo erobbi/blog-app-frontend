@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "semantic-ui-react";
 
 function NewBlogForm() {
   const [title, setTitle] = useState("");
@@ -32,36 +33,52 @@ function NewBlogForm() {
       <h2>Draft your blog here!</h2>
 
       <form class="w-full max-w-sm" onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <div class="ui huge icon input">
+          <input
+            type="text"
+            placeholder="Title here..."
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <i aria-hidden="true"></i>
+        </div>
+
         <br />
         <br />
-        <label htmlFor="content">Content:</label>
-        <input
-          type="text"
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <div>
+          <div class="ui large icon input">
+            <input 
+            type="text" 
+            placeholder="Content..." />
+            <i aria-hidden="true"
+            type="text"
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            ></i>
+          </div>
+        </div>
         <br />
         <br />
+        <div>
+          <div class="ui mini icon input">
+            <input
+              type="text"
+              placeholder="optional image link..."
+              id="img_url"
+              value={img_url}
+              onChange={(e) => setImg_url(e.target.value)}
+            />
+            <i aria-hidden="true"></i>
+          </div>
+          <br />
+        </div>
         <br />
-        <label htmlFor="img_url">Add an image link for your article:</label>
-        <input
-          type="text"
-          id="img_url"
-          value={img_url}
-          onChange={(e) => setImg_url(e.target.value)}
-        />
         <br />
-        <br />
-        <br />
-        <button type="submit">Submit Blog</button>
+        <button type="submit" class="ui button">
+          Submit Blog!
+        </button>
       </form>
     </div>
   );
