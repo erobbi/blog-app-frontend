@@ -9,7 +9,7 @@ function NewBlogForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/blogs", {
+    fetch("/blogs#create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,6 +18,7 @@ function NewBlogForm() {
         title,
         content,
         img_url,
+        likes: 0,
       }),
     }).then((r) => {
       if (r.ok) {
