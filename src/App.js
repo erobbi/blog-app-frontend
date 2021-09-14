@@ -13,16 +13,21 @@ import Login from './Login'
 
 function App() {
   const [blogs, setBlogs] = useState([])
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState("")
   const history = useHistory()
-  
+  const [isFetched, setIsFetched] =useState(false)
+  console.log('hello from app')
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
-        response.json().then((user) => setUser(user));
+        console.log({response})
+        response.json().then((user) =>{ 
+          setUser(user)
+          setIsFetched(true)}
+          );
       }
     });
-  }, []);
+  }, [isFetched]);
   
   return (
     <div className="App">
@@ -36,7 +41,7 @@ function App() {
             <MyProfile user={user} blogs={blogs} setBlogs={setBlogs} />
           </Route>
           <Route exact path="/blogs">
-            <BlogContainer blogs={blogs}/>
+            <BlogContainer blogs={blogs} user={user}/>
           </Route>
           <Route exact path="/signup">
             <Signup setUser={setUser}/>
