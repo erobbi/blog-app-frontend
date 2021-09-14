@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom"
 
 function NewBlogForm({ blogs, setBlogs }) {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [img_url, setImg_url] = useState("");
   const [errors, setErrors] = useState([]);
@@ -18,6 +19,7 @@ function NewBlogForm({ blogs, setBlogs }) {
       },
       body: JSON.stringify({
         title,
+        description,
         content,
         img_url,
         likes: 0,
@@ -46,6 +48,18 @@ function NewBlogForm({ blogs, setBlogs }) {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+          <i aria-hidden="true"></i>
+        </div>
+        <br/>
+        <br/>
+        <div className="ui large icon input">
+          <input
+            type="text"
+            placeholder="Subtitle here..."
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
           <i aria-hidden="true"></i>
         </div>
