@@ -12,8 +12,8 @@ import Login from './Login'
 
 
 function App() {
-  const [blogs, setBlogs] = useState([])
-  const [user, setUser] = useState("")
+  const [blogs, setBlogs] = useState({})
+  const [user, setUser] = useState({})
   const history = useHistory()
   const [isFetched, setIsFetched] =useState(false)
   console.log('hello from app')
@@ -23,15 +23,15 @@ function App() {
         console.log({response})
         response.json().then((user) =>{ 
           setUser(user)
-          setIsFetched(true)}
+        }
           );
       }
     });
-  }, [isFetched]);
+  }, []);
   
   return (
     <div className="App">
-       <NavBar user={user} setUser={setUser} />
+      <NavBar user={user} setUser={setUser} />
       <div>
         <Switch>
           <Route exact path="/blogs/new">
@@ -40,18 +40,21 @@ function App() {
           <Route exact path="/mypage">
             <MyProfile user={user} blogs={blogs} setBlogs={setBlogs} />
           </Route>
+          <Route path="/blogs/:id">
+            <BlogContainer blogs={blogs} user={user} />
+          </Route>
           <Route exact path="/blogs">
-            <BlogContainer blogs={blogs} user={user}/>
+            <BlogContainer blogs={blogs} user={user} />
           </Route>
           <Route exact path="/signup">
-            <Signup setUser={setUser}/>
+            <Signup setUser={setUser} />
           </Route>
           <Route exact path="/login">
-            <Login setUser={setUser}/>
+            <Login setUser={setUser} />
           </Route>
           <Route exact path="/">
             <HomePage />
-          </Route>        
+          </Route>
         </Switch>
       </div>
     </div>
