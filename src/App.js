@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import { useState, useEffect } from 'react';
@@ -18,6 +17,7 @@ function App() {
   const history = useHistory()
   
   console.log(blogs)
+  
   return (
     <div className="App">
        <NavBar user={user} setUser={setUser} />
