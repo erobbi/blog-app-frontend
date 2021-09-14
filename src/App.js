@@ -16,7 +16,13 @@ function App() {
   const [user, setUser] = useState(null)
   const history = useHistory()
   
-  console.log(blogs)
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
   
   return (
     <div className="App">
@@ -27,7 +33,7 @@ function App() {
             <NewBlogForm blogs={blogs} setBlogs={setBlogs} />
           </Route>
           <Route exact path="/mypage">
-            <MyProfile user={user} />
+            <MyProfile user={user} blogs={blogs} setBlogs={setBlogs} />
           </Route>
           <Route exact path="/blogs">
             <BlogContainer blogs={blogs}/>

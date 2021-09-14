@@ -1,13 +1,12 @@
 import RenderBlog from './RenderBlog'
 
-function MyProfile({ user }) {
+function MyProfile({ user, blogs, setBlogs }) {
     console.log(user)
     const { id, username, name, img_url, email, birthdate } = user
     const renderMyBlogs = user.blogs.map((blog)=>
-        <RenderBlog key={blog.id} blog={blog} />)
+        <RenderBlog key={blog.id} blog={blog} blogs={blogs} setBlogs={setBlogs} />)
     const totalBlogs = user.blogs.length
-    let totalLikes = 0
-    user.blogs.map((blog) => totalLikes = blog.likes + totalLikes)
+    // let totalLikes = user.blogs.map((blog) => totalLikes = blog.likes + totalLikes)
 
     return(
           <div className="ui-card">
@@ -22,7 +21,7 @@ function MyProfile({ user }) {
             <div>
                 <h2>Your Stats</h2>
                 <h3>Total Blogs Posted: {totalBlogs}</h3>
-                <h3>Total Likes Recieved: {totalLikes}</h3>
+                {/* <h3>Total Likes Recieved: {totalLikes}</h3> */}
                 <br/>
                 <h2>Your Blogs:</h2>
                 <ul>{renderMyBlogs}</ul>

@@ -1,7 +1,38 @@
 import {Link} from 'react-router-dom'
+import { useState } from 'react'
 
-function RenderBlog({ blogs, blog }) {
-    const { id, title, description, content, likes, img_url, created_at } = blog
+function RenderBlog({ setBlogs, blogs, blog }) {
+    const { id, title, description, content, likes, created_at, img_url = "https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png" } = blog
+    const [newLikes, setNewLikes] = useState(likes)
+
+    function increaseLikes () {
+        fetch(`/blogs/${blog.id}/like`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          blog
+        }),
+      })
+        .then((r) => r.json())
+        .then((obj)=>setNewLikes(obj.likes))     
+    }
+
+    function decrementLikes () {
+        fetch(`/blogs/${blog.id}/dislike`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          blog
+        }),
+      })
+        .then((r) => r.json())
+        .then((obj)=>setNewLikes(obj.likes))     
+    }
+
     return(
         <li>
             <div>
@@ -12,11 +43,14 @@ function RenderBlog({ blogs, blog }) {
                 <h3>{description}</h3>
                 <h4>{content}</h4> 
                 {/* content should be removed for profile and blog feed */}
-                <div>
+                <div style={{width: "50px"}, {height: "50px"}}>
                    <img src={img_url} attr="image" />
                    {/* this throws an error when the link is not proper. perhaps we should add error handling and/or filtering? */}
                 </div>
-                <h4>Likes: {likes}</h4>
+                <h4>Likes: {newLikes} 
+                    <i onClick={increaseLikes} className="thumbs up icon" style={{color: "blue"}, {padding: "20px"}}></i>
+                    <i onClick={decrementLikes} className="thumbs down icon" style={{color: "blue"}, {padding: "20px"}}></i>
+                </h4>
                 <p>posted: {created_at}</p>
             </div>
         </li>
