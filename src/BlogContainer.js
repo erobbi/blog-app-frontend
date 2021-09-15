@@ -6,9 +6,9 @@ function BlogContainer({user}) {
     let blogId = useParams();
     console.log(blogId);
 
-    if (blogId = {}) {
-      blogId.id = 1
-    }
+    // if (blogId = {}) {
+    //   blogId.id = 1
+    // }
     useEffect(() => {
       fetch(`/blogs/${blogId.id}`).then((response) => {
         if (response.ok) {
@@ -67,7 +67,7 @@ function BlogContainer({user}) {
                     <i onClick={increaseLikes} className="thumbs up icon" style={{color: "blue"}, {padding: "20px"}}></i>
                     <i onClick={decrementLikes} className="thumbs down icon" style={{color: "blue"}, {padding: "20px"}}></i>
                 </h4> */}
-               {/* <p>posted: {activeBlog.created_at}</p>  */}
+               <p>posted: {activeBlog.created_at}</p>
             </div>
         </li>
     )
