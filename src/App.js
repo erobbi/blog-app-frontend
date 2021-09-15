@@ -38,7 +38,7 @@ function App() {
             <NewBlogForm blogs={blogs} setBlogs={setBlogs} />
           </Route>
           <Route exact path="/mypage">
-            <MyProfile user={user} blogs={blogs} setBlogs={setBlogs} />
+            <MyProfile user={user} blogs={blogs} setBlogs={setBlogs} setUser={setUser}/>
           </Route>
           <Route path="/blogs/:id">
             <BlogContainer blogs={blogs} user={user} />
