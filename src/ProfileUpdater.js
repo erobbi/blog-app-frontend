@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 function ProfileUpdater( { user, setUser } ) {
-    const [username, setName] = useState("");
-    const [img_url, setImgUrl] = useState("");
-    const [birthdate, setBirthDate] = useState("");
-    const [email, setEmail] = useState("");
+    const [username, setName] = useState(user.username);
+    const [img_url, setImgUrl] = useState(user.img_url);
+    const [birthdate, setBirthDate] = useState(user.birthdate);
+    const [email, setEmail] = useState(user.email);
 
 
     function handleSubmit(e) {
