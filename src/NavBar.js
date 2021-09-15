@@ -5,7 +5,7 @@ function NavBar({ user, setUser }) {
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        setUser(null);
+        setUser({});
       }
     });
   }
@@ -18,36 +18,47 @@ function NavBar({ user, setUser }) {
       <NavLink exact to='/'>
         <li>Home Page</li>
       </NavLink>
-      <NavLink to='/blogs'>
-        <li>Blogs</li>
-      </NavLink>
-      {user? (
+      
+
+      {Object.keys(user).length > 0 ? (
+        <NavLink to='/blogs'>
+          <li>Blogs</li>
+        </NavLink>
+      ) : null}
+
+      {Object.keys(user).length > 0 ? (
         <NavLink to='/blogs/new'>
           <li>Add New Blog</li>
         </NavLink>
       ) : null}
-      {user ? (
+
+      {Object.keys(user).length > 0 ? (
         <NavLink to='/mypage'>
           <li>My Profile</li>
         </NavLink>
       ) : null}
-      {user ? null : (
+
+      {Object.keys(user).length <= 0 ? (
         <NavLink to='/signup'>
           <li>Sign Up</li>
         </NavLink>
-      )}
-      {user ? (
-        <NavLink to='/mypage'>
-          <li className="userNav">
-            <h2>Welcome, {user.username}!</h2>
-          </li>
-        </NavLink>
-      ) : (
+      ) : null }
+
+      {Object.keys(user).length <= 0 ? (
         <NavLink to='/login'>
           <li>Log In</li>
         </NavLink>
+      ) : (
+        null
       )}
-      {user ? (
+
+      {Object.keys(user).length > 0 ? (<NavLink to='/mypage'>
+          <li className="userNav">
+            <h2>Welcome, {user.username}!</h2>
+          </li>
+        </NavLink> ) : null }
+
+      {Object.keys(user).length > 0 ? (
         <NavLink to='/logout'>
           <li onClick={handleLogoutClick}>Log Out</li>
         </NavLink>
