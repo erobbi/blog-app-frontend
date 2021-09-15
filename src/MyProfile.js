@@ -13,10 +13,9 @@ function MyProfile({ user, blogs, setBlogs, setUser }) {
     // let totalLikes = 0
 
     function handleDeleteClick() {
-        fetch("/users/destroy", {
+        fetch(`users/${user.id}`, {
           method: "DELETE",
-        })
-          .then((r) => r.json());
+        }).then((r) => r.json());
       }
     
     
