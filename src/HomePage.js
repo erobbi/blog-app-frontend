@@ -1,14 +1,20 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function HomePage({ allBlogs, setAllBlogs }) {
+  const [ isFetched, setIsFetched ] = useState(false)
 
   useEffect(() => {
     fetch("/blogs")
       .then((r) => r.json())
-      .then(setAllBlogs);
+      .then(obj => {
+        setAllBlogs(obj);
+        setIsFetched(true)
+      })
   }, []);
+  
+ console.log(allBlogs)
 
   return (
     <main className="blog">
