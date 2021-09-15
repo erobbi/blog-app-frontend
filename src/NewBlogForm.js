@@ -27,7 +27,6 @@ function NewBlogForm({ blogs, setBlogs }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((newBlog) => {
-          setBlogs([...blogs, newBlog])
           history.push('/mypage')
         });
       } else {
