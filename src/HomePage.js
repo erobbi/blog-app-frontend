@@ -19,7 +19,7 @@ function HomePage({ allBlogs, setAllBlogs }) {
   return (
     <main className="blog">
       <h2>All Blogs</h2>
-      {/* {allBlogs.map((blog) => {
+      {allBlogs.map((blog) => {
       
         return (
           <div key={blog.id} >
@@ -34,7 +34,7 @@ function HomePage({ allBlogs, setAllBlogs }) {
           </div>
          
         );
-      })} */}
+      })}
     </main>
   );
 }
