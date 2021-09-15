@@ -9,7 +9,7 @@ function ProfileUpdater( { user, setUser } ) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("/users/update", {
+        fetch(`users/${user.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
