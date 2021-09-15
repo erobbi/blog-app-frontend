@@ -21,7 +21,7 @@ function NavBar({ user, setUser }) {
       <NavLink to='/blogs'>
         <li>Blogs</li>
       </NavLink>
-      {user? (
+      {user ? (
         <NavLink to='/blogs/new'>
           <li>Add New Blog</li>
         </NavLink>
