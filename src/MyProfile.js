@@ -1,14 +1,10 @@
-import RenderBlog from './RenderBlog'
 import { useState } from 'react'
 import ProfileUpdater from './ProfileUpdater'
 
-function MyProfile({ user, blogs, setBlogs, setUser }) {
+function MyProfile({ user, setUser }) {
 
     const [showUpdater, setShowUpdater] = useState(false);
 
-    console.log(user)
-    const renderMyBlogs = user.blogs && user.blogs.map((blog)=> 
-        <RenderBlog key={blog.id} blog={blog} blogs={blogs} setBlogs={setBlogs} />)
     const totalBlogs = user.blogs && user.blogs.length
     // let totalLikes = 0
 
@@ -37,8 +33,6 @@ function MyProfile({ user, blogs, setBlogs, setUser }) {
                 <h3>Total Blogs Posted: {totalBlogs}</h3>
                 {/* <h3>Total Likes Recieved: {totalLikes}</h3> */}
                 <br/>
-                <h2>Your Blogs:</h2>
-                <ul>{renderMyBlogs}</ul>
             </div>
           </div>
     )

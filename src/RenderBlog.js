@@ -45,27 +45,36 @@ function RenderBlog({ setBlogs, blogs, blog }) {
      });
      console.log({imgHeights})
 
-    return(
-        <li>
-            <div>
-                <h2>{title}</h2>
-                <Link to={`/blogs/${blog.id}`} activeClassName="active">{title}</Link>
-                
-                {/* I might try adding links to each article */}
-                <h3>{description}</h3>
-                <h4>{content}</h4> 
-                {/* content should be removed for profile and blog feed */}
-                <div style={{width: "50px"}, {height: "50px"}}>
-                   <img src={img_url} attr="image" />
-                </div>
-                <h4>Likes: {newLikes} 
-                    <i onClick={increaseLikes} className="thumbs up icon" style={{color: "blue"}, {padding: "20px"}}></i>
-                    <i onClick={decrementLikes} className="thumbs down icon" style={{color: "blue"}, {padding: "20px"}}></i>
-                </h4>
-                <p>posted: {created_at}</p>
-            </div>
-        </li>
-    )
+    return (
+      <div className="blog">
+        <h1>Your Blogs:</h1>
+        <div>
+          <h2>{title}</h2>
+          <Link to={`/blogs/${blog.id}`} activeClassName="active">
+            {title}
+          </Link>
+          <h3>{description}</h3>
+          <h4>{content}</h4>
+          <div style={({ width: "50px" }, { height: "50px" })}>
+            <img src={img_url} attr="image" />
+          </div>
+          <h4>
+            Likes: {newLikes}
+            <i
+              onClick={increaseLikes}
+              className="thumbs up icon"
+              style={({ color: "blue" }, { padding: "20px" })}
+            ></i>
+            <i
+              onClick={decrementLikes}
+              className="thumbs down icon"
+              style={({ color: "blue" }, { padding: "20px" })}
+            ></i>
+          </h4>
+          <p>posted: {created_at}</p>
+        </div>
+      </div>
+    );
 }
 
 export default RenderBlog
