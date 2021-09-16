@@ -66,10 +66,13 @@ article h3 {
 
 .comments {
   list-style-type: none;
+  display: flex;
+  /* flex-direction: row-reverse;
+  flex-flow: row nowrap; */
 }
 
 .blog-button {
-  padding: 10px;
+  padding: 3px;
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 50px;
@@ -92,6 +95,16 @@ button:hover {
 .comment-user {
   padding-right: 5px;
 }
+
+/* .comment-button {
+  padding: 3px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 3px;
+  background-color: rgb(235, 235, 227);
+  border-radius: 4px;
+} */
 
 
 
