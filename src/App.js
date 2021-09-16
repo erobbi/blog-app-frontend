@@ -16,7 +16,6 @@ function App() {
   const [blogs, setBlogs] = useState({})
   const [user, setUser] = useState({})
   // const [isFetched, setIsFetched] =useState(false)
-  const [ allBlogs, setAllBlogs ] =useState([])
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -56,7 +55,7 @@ function App() {
             <HomePageRenderBlogs user={user} />
           </Route>
           <Route exact path="/">
-            <HomePage allBlogs={allBlogs}  setAllBlogs={setAllBlogs}  />
+            <HomePage  />
           </Route>
         </Switch>
       </div>

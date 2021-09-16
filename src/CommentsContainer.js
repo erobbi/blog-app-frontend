@@ -9,8 +9,8 @@ function CommentsContainer({ user, blog }) {
     const renderComments = comments.map(comment => {
        
         return (
-              <li className="comments" key={comment.id}> 
-              {comment.user_id} : {comment.content} 
+            <li className="comments" key={comment.id}> 
+              <p className="comment-user">{comment.who_wrote_comment}:{comment.content}</p>
             </li>
         )
     })

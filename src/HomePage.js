@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function HomePage({ allBlogs, setAllBlogs }) {
+function HomePage() {
   const [ isFetched, setIsFetched ] = useState(false)
+  const [ allBlogs, setAllBlogs ] = useState([])
 
   useEffect(() => {
     fetch("/blogs")
@@ -14,8 +15,6 @@ function HomePage({ allBlogs, setAllBlogs }) {
       })
   }, []);
   
- console.log(allBlogs)
-
   return (
     <main className="blog">
       <h2>All Blogs</h2>
