@@ -93,7 +93,14 @@ button:hover {
   padding-right: 5px;
 }
 
+.avatar {
+  height: 200px;
+  width: 200px;
+}
 
+.blogPhoto {
+  height: 300px;
+}
 
 
 

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-  const [ isFetched, setIsFetched ] = useState(false)
   const [ allBlogs, setAllBlogs ] = useState([])
 
   useEffect(() => {
@@ -11,7 +10,6 @@ function HomePage() {
       .then((r) => r.json())
       .then(obj => {
         setAllBlogs(obj);
-        setIsFetched(true)
       })
   }, []);
   

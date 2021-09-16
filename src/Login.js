@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 function Login({ user, setUser }) {
@@ -6,23 +6,7 @@ function Login({ user, setUser }) {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
     const history = useHistory()
-
-    // useEffect(() => {
-    //     fetch("/me").then((response) => {
-    //       if (response.ok) {
-    //         response.json().then((user) => {
-    //           setUser(user)
-    //           if (user) {
-    //             return <h2>Welcome, {user.username}!</h2>;
-    //           } else {
-    //             return <Login setUser={setUser} />;
-    //           }
-    //         });
-    //       }
-    //     });
-    // }, []);
   
     function handleSubmit(e) {
         e.preventDefault();

@@ -15,7 +15,6 @@ import HomePageRenderBlogs from './HomePageRenderBlogs';
 function App() {
   const [blogs, setBlogs] = useState({})
   const [user, setUser] = useState({})
-  // const [isFetched, setIsFetched] =useState(false)
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -40,10 +39,10 @@ function App() {
             <MyProfile user={user} blogs={blogs} setBlogs={setBlogs} setUser={setUser}/>
           </Route>
           <Route path="/blogs/:id">
-            <BlogContainer blogs={blogs} user={user} />
+            <BlogContainer user={user} />
           </Route>
           <Route exact path="/blogs">
-            <BlogContainer blogs={blogs} user={user} />
+            <BlogContainer user={user} setUser={setUser} />
           </Route>
           <Route path="/signup">
             <Signup setUser={setUser} />

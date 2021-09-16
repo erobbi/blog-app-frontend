@@ -6,7 +6,6 @@ function BlogContainerRenderBlog({ user }) {
   const [blog, setBlog] = useState({});
   const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     fetch(`/blogs/${id}`).then((r) => {
@@ -15,17 +14,13 @@ function BlogContainerRenderBlog({ user }) {
           setBlog(blog);
           setIsLoaded(true);
         });
-        // } else {
-        //   r.json().then(setErrors);
       }
     });
   }, [id]);
 
-  // const blog = allBlogs.find(blog => blog.id == id)
   const { title, img_url, description, created_at, content, likes } = blog;
   const [newLikes, setNewLikes] = useState(likes);
 
-  // const date = [...created_at].slice(0,10)
   function increaseLikes() {
     fetch(`/blogs/${id}/like`, {
       method: "PATCH",
