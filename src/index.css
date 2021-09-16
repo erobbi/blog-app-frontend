@@ -96,17 +96,14 @@ button:hover {
   padding-right: 5px;
 }
 
-/* .comment-button {
-  padding: 3px;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 50px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 3px;
-  background-color: rgb(235, 235, 227);
-  border-radius: 4px;
-} */
+.avatar {
+  height: 200px;
+  width: 200px;
+}
 
-
+.blogPhoto {
+  height: 300px;
+}
 
 
 

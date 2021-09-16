@@ -29,7 +29,8 @@ function MyProfile({ user, setUser }) {
                   <button onClick={() => setShowUUpdater(!showUUpdater)}>Update Username</button>
                   {showUUpdater ? <UsernameUpdater user={user} setUser={setUser} /> : null }
                   <h3>Avatar: </h3>
-                  <img src={user.img_url}/>
+                  <img src={user.img_url} className="avatar"/>
+                  <br/>
                   <button onClick={() => setShowAUpdater(!showAUpdater)}>Update Avatar</button>
                   {showAUpdater ? <AvatarUpdater user={user} setUser={setUser} /> : null }
                   <h3>DOB: {user.birthdate}</h3>
