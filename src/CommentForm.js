@@ -26,8 +26,8 @@ function CommentForm ({ isClicked, setIsClicked, user, blog, setComments, commen
 
     return (
         <form onSubmit={handleAddComment}>
-            <input type="text" name="content" placeholder="write comment..." onChange={(e)=>setContent(e.target.value)} />
-            <button>Add Comment</button>
+            <input className="comment-input" type="text" name="content" placeholder="write comment..." onChange={(e)=>setContent(e.target.value)} />
+            <button className="blog-button">Add Comment</button>
         </form>
     )
 }

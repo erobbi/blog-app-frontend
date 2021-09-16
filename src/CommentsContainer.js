@@ -4,11 +4,12 @@ import CommentForm from './CommentForm'
 function CommentsContainer({ user, blog }) {
     const [ comments, setComments ] = useState(blog.comments)  
     const [ isClicked, setIsClicked ] = useState(false)
+    console.log(comments)
+    
     const renderComments = comments.map(comment => {
        
         return (
               <li className="comments" key={comment.id}> {comment.content} 
-             {/* { comment.user.id == user.id ? <><button>update</button><button>Delete</button></> : null } */}
             </li>
         )
     })
@@ -24,7 +25,7 @@ function CommentsContainer({ user, blog }) {
         </ul>
        : null }
       { isClicked ? <CommentForm isClicked={isClicked} user={user} blog={blog} setIsClicked={setIsClicked} setComments={setComments} comments={comments}/> 
-       : <button onClick={addComments} >Add Comments</button> }
+       : <button className="blog-button" onClick={addComments} >Add Comments</button> }
       </div>
       
     )

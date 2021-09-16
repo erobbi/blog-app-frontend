@@ -53,7 +53,7 @@ function App() {
             <Login setUser={setUser} />
           </Route>
           <Route path="/allblogs/:id">
-            <HomePageRenderBlogs user={user} allBlogs={allBlogs} setAllBlogs={setAllBlogs} />
+            <HomePageRenderBlogs user={user} />
           </Route>
           <Route exact path="/">
             <HomePage allBlogs={allBlogs}  setAllBlogs={setAllBlogs}  />

@@ -2,45 +2,53 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import CommentsContainer from './CommentsContainer'
 
-// const initialState = {
-//   blog: {},
-//   error: {},
-//   status: "pending",
-// };
-
-function HomePageRenderBlogs({ allBlogs, user }) {
-//   const [{ blog, error, status }, setState] = useState(initialState);
+function HomePageRenderBlogs({ user }) {
+  const [ blog, setBlog ] = useState({})
   const { id } = useParams();
-//   const [ isLoaded, setIsLoaded ] = useState(false)
+  const [ isLoaded, setIsLoaded ] = useState(false)
+  const [ errors, setErrors ] = useState([])
 
-// console.log(status)
+useEffect(() => {
+  fetch(`/blogs/${id}`).then((r) => {
+      if (r.ok) {
+        r.json().then((blog) => {
+          setBlog(blog)
+          setIsLoaded(true)
+        }
+        );
+      // } else {
+      //   r.json().then(setErrors);
+      }
+    });
+  }, [id]);
 
-//   useEffect(() => {
-//     setState(initialState);
-//     fetch(`/blogs/${id}`).then((r) => {
-//       if (r.ok) {
-//         r.json().then((blog) => {
-//           setState({ blog, error: null, status: "resolved" })
-//           setIsLoaded(true)
-//         }
-//         );
-//       } else {
-//         r.json().then((message) =>
-//           setState({ blog: null, error: message.error, status: "rejected" })
-//         );
-//       }
-//     });
-//   }, [id]);
-
+  // useEffect(() => {
+  //   setState(initialState);
+  //   fetch(`/blogs/${id}`).then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((blog) => {
+  //         console.log(blog)
+        
+  //         setState({ blog, error: null, status: "resolved" })
+  //         // setIsLoaded(true)
+  //       }
+  //       );
+  //     } else {
+  //       r.json().then((message) =>
+  //         setState({ blog: null, error: message.error, status: "rejected" })
+  //       );
+  //     }
+  //   });
+  // }, []);
 //   if (status === "pending") return <h1>Loading...</h1>;
-// if (isLoaded) {
-//     return <h1>Loading...</h1>;
-// } 
-    const blog = allBlogs.find(blog => blog.id == id)
+    // if (!isLoaded) {
+    //     return <div className="blog"><h1 style={{color: "red"}}>Please Signup or  Login to see blog details. </h1></div>;
+    // } 
+    // const blog = allBlogs.find(blog => blog.id == id)
     const { title, img_url, description, created_at, content, likes } = blog;
     const [newLikes, setNewLikes] = useState(likes)
-    const date = [...created_at].slice(0,10)
-
+   
+    // const date = [...created_at].slice(0,10)
       function increaseLikes () {
         fetch(`/blogs/${id}/like`, {
         method: "PATCH",
@@ -70,38 +78,44 @@ function HomePageRenderBlogs({ allBlogs, user }) {
     }
 
   return ( 
+    <>
+    {/* {errors.length > 0? errors.map((error) => <p>{error}</p>) : null} */}
+    { isLoaded ? 
       <div className="blog">
            <article>
              <h1>{title}</h1>
              <div className="ui divider" />
              <small>
-               <p>{description}</p>
+               <h4>{description}</h4>
                <p className="ui left aligned container">
-                 Posted on {date} 
+                 Posted on {[...created_at].slice(0,10)} 
                  {/* •  */}
                </p>
                <p className="ui left aligned container">
-                 <em> Written by {blog.user.username} </em>
+                 <em> Written by <span style={{fontWeight: "bold"}}>{blog.user.username}</span></em>
                </p>
              </small>
              <div className="ui divider" />
-             {/* <div className={{height:"50px"}, {width: "50px"}}>
-                 <img src={img_url} alt="image" />
-             </div> */}
+             <div className="image">
+                 <img src={img_url} alt="image" style={{height:"60%"}, {width: "60%"}}/>
+             </div>
              <p>{content}</p>
              <div className="ui divider" />
-             <h5>Likes: {newLikes} 
-                           <i onClick={increaseLikes} className="thumbs up icon" style={{padding: "20px"}}></i>
-                           <i onClick={decrementLikes} className="thumbs down icon" style={{padding: "20px"}}></i>
-            </h5> 
+             { newLikes === undefined ? <h5>Likes: {likes}</h5> : <h5>Likes: {newLikes}</h5> } 
+                           <i onClick={increaseLikes} className="thumbs up icon" style={ {padding:"20px", cursor: "pointer", color:"blue"}}></i>
+                           <i onClick={decrementLikes} className="thumbs down icon" style={ {padding:"20px", cursor: "pointer", color:"blue"}} ></i>
            <div className="ui divider" />
            <CommentsContainer user={user} blog={blog}/>
            <div className="ui divider" />
            <Link to={'/'}>
-               <button>Back to List</button>
+               <button className="blog-button">Back to List</button>
            </Link>
            </article> 
-        </div>
+        </div> 
+        :
+        <div className="blog"><h1 style={{color: "red"}}>Please Signup or Login to see blog details. </h1></div>
+        }
+        </>
      );
 }
 

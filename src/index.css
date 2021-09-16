@@ -68,3 +68,30 @@ article h3 {
   list-style-type: none;
 }
 
+.blog-button {
+  padding: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 4px 3px;
+  background-color: rgb(235, 235, 227);
+  border-radius: 4px;
+}
+
+button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(137, 137, 137);
+}
+
+.comment-input {
+  padding: 10px;
+  font-size: 15px;
+}
+
+
+
+
+
+
+
