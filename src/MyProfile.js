@@ -1,9 +1,15 @@
 import { useState } from 'react'
-import ProfileUpdater from './ProfileUpdater'
+import UsernameUpdater from './Updaters/UsernameUpdater';
+import AvatarUpdater from './Updaters/AvatarUpdater';
+import DateUpdater from './Updaters/DateUpdater';
+import EmailUpdater from './Updaters/EmailUpdater';
 
 function MyProfile({ user, setUser }) {
 
-    const [showUpdater, setShowUpdater] = useState(false);
+    const [showUUpdater, setShowUUpdater] = useState(false);
+    const [showAUpdater, setShowAUpdater] = useState(false);
+    const [showDUpdater, setShowDUpdater] = useState(false);
+    const [showEUpdater, setShowEUpdater] = useState(false);
 
     const totalBlogs = user.blogs && user.blogs.length
     // let totalLikes = 0
@@ -16,15 +22,22 @@ function MyProfile({ user, setUser }) {
     
     
     return(
-          <div className="ui-card">
+          <div className="blog">
             <div>
                 <h1> My Profile </h1>
                 <h2>Name: {user.username}</h2>
-                <h3>Avatar: {user.img_url}</h3>
-                <h3>DOB: {user.birthdate}</h3>
-                <h3>email: {user.email}</h3>
-                <button onClick={e => setShowUpdater(!showUpdater)}>Modify Account</button>
-                {!showUpdater ? <ProfileUpdater user={user} setUser={setUser} /> : null}
+                  <button onClick={() => setShowUUpdater(!showUUpdater)}>Update Username</button>
+                  {showUUpdater ? <UsernameUpdater user={user} setUser={setUser} /> : null }
+                  <h3>Avatar: </h3>
+                  <img src={user.img_url}/>
+                  <button onClick={() => setShowAUpdater(!showAUpdater)}>Update Avatar</button>
+                  {showAUpdater ? <AvatarUpdater user={user} setUser={setUser} /> : null }
+                  <h3>DOB: {user.birthdate}</h3>
+                  <button onClick={() => setShowDUpdater(!showDUpdater)}>Update DOB</button>
+                  {showDUpdater ? <DateUpdater user={user} setUser={setUser} /> : null }
+                  <h3>email: {user.email}</h3>
+                  <button onClick={() => setShowEUpdater(!showEUpdater)}>Update Email</button>
+                  {showEUpdater ? <EmailUpdater user={user} setUser={setUser} /> : null }
                 <button onClick={handleDeleteClick}>Delete Profile</button>
             </div>
             <br/>
