@@ -50,8 +50,8 @@ function NewBlogForm({ blogs, setBlogs }) {
           />
           <i aria-hidden="true"></i>
         </div>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div className="ui large icon input">
           <input
             type="text"
