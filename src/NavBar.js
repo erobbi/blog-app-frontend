@@ -22,7 +22,7 @@ function NavBar({ user, setUser }) {
 
       {Object.keys(user).length > 0 ? (
         <NavLink to='/blogs'>
-          <li>Blogs</li>
+          <li>My Blogs</li>
         </NavLink>
       ) : null}
 
