@@ -36,7 +36,7 @@ function NewBlogForm({ blogs, setBlogs }) {
   }
 
   return (
-    <div>
+    <main className="blog">
       <h2>Draft your blog here!</h2>
 
       <form className="ui form" onSubmit={handleSubmit}>
@@ -95,7 +95,7 @@ function NewBlogForm({ blogs, setBlogs }) {
           Submit Blog!
         </button>
       </form>
-    </div>
+    </main>
   );
 }
 
